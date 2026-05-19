@@ -1,0 +1,3 @@
+[submodule "CaveJS"]
+	path = CaveJS
+	url = git@github.com:paulviville/CaveJS.git
