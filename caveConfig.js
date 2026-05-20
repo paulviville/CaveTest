@@ -9,9 +9,9 @@ const caveConfig = {
 		}
 	],
 
-///		2 ------ 3
-///     | Screen |
-///     0 ------ 1
+/// 2 ------ 3
+/// | Screen |
+/// 0 ------ 1
 	screens: [
 		{
 			name: "leftScreen",
