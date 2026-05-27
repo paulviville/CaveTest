@@ -4,8 +4,24 @@ const caveConfigReims = {
 	windows: [
 		{
 			id: 0,
-			channel: 0,
-			name: "main",
+			display: 0,
+			name: "left",
+			width: 960,
+			height: 300,
+		},
+		{
+			id: 1,
+			display: 1,
+			name: "right",
+			width: 960,
+			height: 300,
+		},
+		{
+			id: 2,
+			display: 2,
+			name: "floor",
+			width: 960,
+			height: 300,
 		}
 	],
 

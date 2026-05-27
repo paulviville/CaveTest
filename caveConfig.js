@@ -1,11 +1,13 @@
 const caveConfig = {
-	mode: "Sequential", // "SbS"
+	stereoMode: "Sequential", /// "Sequential" || "SbS"
 	
 	windows: [
 		{
 			id: 0,
-			channel: 0,
+			display: 0,
 			name: "main",
+			width: 1290,
+			height: 300,
 		}
 	],
 
@@ -14,6 +16,7 @@ const caveConfig = {
 /// 0 ------ 1
 	screens: [
 		{
+			id: 0,
 			name: "leftScreen",
 			corners: [
 				[ -2.5455844122715714, 0, 0 ],
@@ -21,9 +24,11 @@ const caveConfig = {
 				[ -2.5455844122715714, 0, 2.25 ],
 				[ 0, 2.5455844122715714, 2.25 ]
 			],
-			window: 0 
+			window: 0,
+			viewport: 0,
 		},
 		{
+			id: 1,
 			name: "rightScreen",
 			corners: [ 
 				[ 0, 2.5455844122715714, 0 ],
@@ -31,9 +36,11 @@ const caveConfig = {
 				[ 0, 2.5455844122715714, 2.25 ],
 				[ 2.5455844122715714, 0, 2.25 ]
 			],
-			window: 0 
+			window: 0,
+			viewport: 1,
 		},
 		{
+			id: 2,
 			name: "floorScreen",
 			corners: [
 				[ -1.590990257669732, 0.9545941546018395, 0 ],
@@ -41,7 +48,38 @@ const caveConfig = {
 				[ 0, 2.5455844122715714, 0 ],
 				[ 2.5455844122715714, 0, 0 ]
 			],
-			window: 0 
+			window: 0,
+			viewport: 2,
+		},
+	],
+
+	viewports: [
+		{
+			id: 0,
+			width: 430,
+			height: 300,
+			left: 0,
+			bottom: 0,
+			screen: 0,
+			window: 0,
+		},
+		{
+			id: 1,
+			width: 430,
+			height: 300,
+			left: 430,
+			bottom: 0,
+			screen: 1,
+			window: 0,
+		},
+		{
+			id: 2,
+			width: 430,
+			height: 300,
+			left: 860,
+			bottom: 0,
+			screen: 2,
+			window: 0,
 		},
 	],
 }
