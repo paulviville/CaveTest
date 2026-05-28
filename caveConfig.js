@@ -17,46 +17,40 @@ const caveConfig = {
 	screens: [
 		{
 			id: 0,
-			name: "leftScreen",
+			name: "left",
 			corners: [
 				[ -2.5455844122715714, 0, 0 ],
 				[ 0, 2.5455844122715714, 0 ],
 				[ -2.5455844122715714, 0, 2.25 ],
 				[ 0, 2.5455844122715714, 2.25 ]
 			],
-			window: 0,
-			viewport: 0,
 		},
 		{
 			id: 1,
-			name: "rightScreen",
+			name: "right",
 			corners: [ 
 				[ 0, 2.5455844122715714, 0 ],
 				[ 2.5455844122715714, 0, 0 ],
 				[ 0, 2.5455844122715714, 2.25 ],
 				[ 2.5455844122715714, 0, 2.25 ]
 			],
-			window: 0,
-			viewport: 1,
 		},
 		{
 			id: 2,
-			name: "floorScreen",
+			name: "floor",
 			corners: [
 				[ -1.590990257669732, 0.9545941546018395, 0 ],
 				[ 0.9545941546018395, -1.590990257669732, 0 ],
 				[ 0, 2.5455844122715714, 0 ],
 				[ 2.5455844122715714, 0, 0 ]
 			],
-			window: 0,
-			viewport: 2,
 		},
 	],
 
 	viewports: [
 		{
 			id: 0,
-			width: 430,
+			width: 429,
 			height: 300,
 			left: 0,
 			bottom: 0,
@@ -65,7 +59,7 @@ const caveConfig = {
 		},
 		{
 			id: 1,
-			width: 430,
+			width: 429,
 			height: 300,
 			left: 430,
 			bottom: 0,
