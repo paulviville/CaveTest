@@ -1,27 +1,28 @@
 const caveConfigReims = {
-	mode: "Sequential", // "SbS"
+	// mode: "Sequential", // "SbS"
+	stereoMode: "SbS", // "SbS"
 	
 	windows: [
 		{
 			id: 0,
 			display: 0,
 			name: "left",
-			width: 1920,
-			height: 1200,
+			width: 430,
+			height: 300,
 		},
 		{
 			id: 1,
 			display: 1,
 			name: "right",
-			width: 1920,
-			height: 1200,
+			width: 430,
+			height: 300,
 		},
 		{
 			id: 2,
 			display: 1,
 			name: "floor",
-			width: 1920,
-			height: 1200,
+			width: 430,
+			height: 300,
 		}
 	],
 
@@ -64,8 +65,8 @@ const caveConfigReims = {
 	viewports: [
 		{
 			id: 0,
-			width: 1920,
-			height: 1200,
+			width: 430,
+			height: 300,
 			left: 0,
 			bottom: 0,
 			screen: 0,
@@ -73,8 +74,8 @@ const caveConfigReims = {
 		},
 		{
 			id: 1,
-			width: 1920,
-			height: 1200,
+			width: 430,
+			height: 300,
 			left: 0,
 			bottom: 0,
 			screen: 1,

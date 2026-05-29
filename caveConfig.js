@@ -50,7 +50,7 @@ const caveConfig = {
 	viewports: [
 		{
 			id: 0,
-			width: 429,
+			width: 430,
 			height: 300,
 			left: 0,
 			bottom: 0,
@@ -59,7 +59,7 @@ const caveConfig = {
 		},
 		{
 			id: 1,
-			width: 429,
+			width: 430,
 			height: 300,
 			left: 430,
 			bottom: 0,
