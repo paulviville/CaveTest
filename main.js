@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { OrbitControls } from './three/OrbitControls.js';
 import Screen from './CaveJS/Screen.js';
 import ScreenHelper from './CaveJS/ScreenHelper.js';
+import CaveManager from './CaveJS/CaveManager.js';
 
 import caveConfig from './caveConfig.js';
 import caveConfigReims from './caveConfigReims.js';
@@ -28,40 +29,32 @@ renderer.setAnimationLoop( animate );
 
 function animate ( ) {
 	renderer.render( scene, camera );
-}""
-
-
-// const screen0 = new Screen( )
-// const screenHelper0 = new ScreenHelper( screen0 );
-// scene.add(screenHelper0)
-
-const { screens, stereoMode, viewports, windows } = caveConfig;
-const caveScreens = [ ];
-for ( const screenData of screens ) {
-	const corners = screenData.corners.map( corner => new THREE.Vector3( ...corner ) )
-	console.log( corners )
-	const screen = new Screen( corners );
-	caveScreens.push( screen );
 }
-const cave = new Cave( caveScreens );
-const caveHelper = new CaveHelper( cave );
+
+const caveManager = new CaveManager( caveConfig )
+
+const { stereoMode, viewports, windows } = caveConfig;
+
+
+const cave = caveManager.cave
+// const caveHelper = new CaveHelper( cave );
+const caveHelper = caveManager.caveHelper ;
 scene.add( caveHelper )
-cave.position = new THREE.Vector3( -1, -1, 1 );
-cave.scale = new THREE.Vector3( 1, 1, 1 );
+// cave.position = new THREE.Vector3( -1, -1, 1 );
+// cave.scale = new THREE.Vector3( 1, 1, 1 );
 const rotation = new Quaternion( ).setFromAxisAngle( new THREE.Vector3( 1, 0, 0 ), -Math.PI/2)
 rotation.multiply( new Quaternion( ).setFromAxisAngle( new THREE.Vector3( 0, 0, 1), -Math.PI/4) )
 cave.rotation = rotation
 
 const headMatrix = new THREE.Matrix4( );
 headMatrix.compose( 
-	new THREE.Vector3( 0, 0, 1 ),
+	new THREE.Vector3( 0.5, 0.5, 1.1 ),
 	new Quaternion( ),
 	new THREE.Vector3( 1, 1, 1 ) 
 )
 
-const caveRenderer = new CaveRenderer( cave );
+const caveRenderer = caveManager.caveRenderer;
 caveRenderer.setScene( scene );
-caveRenderer.setStereoMode( stereoMode );
 
 window.caveRenderer = caveRenderer;
 
@@ -69,51 +62,25 @@ window.caveRenderer = caveRenderer;
 cave.updateScreenCameras( headMatrix );
 caveHelper.updateScreenCameraHelpers()
 
-const caveWindows = new Map( );
-for ( const windowData of windows ) {
-	console.log(windowData)
-	const caveWindow = new CaveWindow(
-		windowData.id,
-		windowData.name,
-		windowData.width,
-		windowData.height,
-		{ 
-			onLoad: ( canvas ) => {
-				// const windowRenderer = new THREE.WebGLRenderer( { canvas: canvas } );
-				const windowRenderer = caveRenderer.addCanvas( windowData.id, canvas );
-			}
-		}
-	);
-	caveWindow.open( windowData.display );
-	caveWindows.set( windowData.id, caveWindow );
+
+
+
+
+window.moveHead = function ( x, y, z ) {
+	headMatrix.compose( 
+		new THREE.Vector3( x, y, z ),
+		new Quaternion( ),
+		new THREE.Vector3( 1, 1, 1 ) 
+	)
+
+	cave.updateScreenCameras( headMatrix );
+	caveHelper.updateScreenCameraHelpers( );
 }
 
-for ( const viewportData of viewports ) {
-	caveRenderer.addViewport( viewportData.id, viewportData );
+window.transformCave = function ( x, y, z, s ) {
+	cave.position = new THREE.Vector3( x, y, z );
+	cave.scale = new THREE.Vector3( s, s, s );
+	
+	cave.updateScreenCameras( headMatrix );
+	caveHelper.updateScreenCameraHelpers( );
 }
-
-// function animate ( ) {
-// 	renderer.render( scene, camera );
-// }
-
-const caveScreensReims = [ ];
-for ( const screenData of caveConfigReims.screens ) {
-	const corners = screenData.corners.map( corner => new THREE.Vector3( ...corner ) )
-	console.log( corners )
-	const screen = new Screen( corners );
-	caveScreensReims.push( screen );
-}
-const caveReims = new Cave( caveScreensReims );
-const caveHelperReims = new CaveHelper( caveReims );
-// scene.add( caveHelperReims )
-
-caveReims.position = new THREE.Vector3( -3, -1, 3 );
-caveReims.rotation = new Quaternion( ).setFromAxisAngle( new THREE.Vector3( 1, 0, 0 ), -Math.PI/2)
-
-window.addEventListener( "beforeunload", ( ) => {
-	caveWindows.forEach( caveWindow => caveWindow.close( ) );
-} );
-
-
-
-

@@ -38,7 +38,6 @@ const caveConfigReims = {
 				[ 0, 4, 2.5],
 				[ 4, 4, 2.5]
 			],
-			window: 0 
 		},
 		{
 			name: "right",
@@ -48,17 +47,15 @@ const caveConfigReims = {
 				[ 4, 4, 2.5],
 				[ 4, 0, 2.5]
 			],
-			window: 0 
 		},
 		{
 			name: "floor",
 			corners: [
 				[ 0, 0, 0],
-				[ 0, 4, 0],
 				[ 4, 0, 0],
+				[ 0, 4, 0],
 				[ 4, 4, 0]
 			],
-			window: 0 
 		}
 	],
 
@@ -91,6 +88,15 @@ const caveConfigReims = {
 			window: 2,
 		}
 	],
+
+	tracking: {
+		head: "HMD",
+		controllers: [
+			{
+				
+			}
+		],
+	}
 }
 
 
