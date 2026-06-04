@@ -92,10 +92,17 @@ const caveConfigReims = {
 	tracking: {
 		head: "HMD",
 		controllers: [
-			{
-				
-			}
+			"LeftController",
+			"RightController",
 		],
+		analogs: [
+			"JCLS",
+			"JCRS",
+		],
+		buttons: {
+			"JCLB": [ 0, 1, 2, 3, 4, 6, 7, 10 ], /// make object value -> action
+			"JCRB": [ 0, 1, 2, 3, 4, 6, 7, 10 ],
+		},
 	}
 }
 

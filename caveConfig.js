@@ -1,6 +1,7 @@
 const caveConfig = {
 	stereoMode: "Sequential", /// "Sequential" || "SbS"
-	
+	frameRate: 60,
+
 	windows: [
 		{
 			id: 0,
@@ -76,6 +77,29 @@ const caveConfig = {
 			window: 0,
 		},
 	],
+
+	vrpn: {
+		trackers: [
+			{ target: "head", signal: "HMD" },
+			{ target: "leftHand", signal: "LeftController" },
+			{ target: "rightHand", signal: "RightController" },
+			/// targets "extra"
+		],
+		analogs: [
+			{ target: "leftStick", signal: "JCLS" },
+			{ target: "rightStick", signal: "JCRS" },
+		],
+		buttons: [
+			{ 
+				signal: "JCLB",
+				values: [ 0, 1, 2, 3, 4, 6, 7, 10 ]
+			},
+			{ 
+				signal: "JCRB",
+				values: [ 0, 1, 2, 3, 4, 6, 7, 10 ]
+			},
+		],
+	}
 }
 
 

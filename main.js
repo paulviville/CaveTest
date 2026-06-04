@@ -33,7 +33,6 @@ function animate ( ) {
 
 const caveManager = new CaveManager( caveConfig )
 
-const { stereoMode, viewports, windows } = caveConfig;
 
 
 const cave = caveManager.cave
@@ -54,6 +53,13 @@ headMatrix.compose(
 )
 
 const caveRenderer = caveManager.caveRenderer;
+caveRenderer.preRender = ( ) => {
+	caveHelper.visible = false;
+}
+caveRenderer.postRender = ( ) => {
+	caveHelper.visible = true;
+}
+
 caveRenderer.setScene( scene );
 
 window.caveRenderer = caveRenderer;
