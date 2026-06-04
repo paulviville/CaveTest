@@ -89,20 +89,27 @@ const caveConfigReims = {
 		}
 	],
 
-	tracking: {
-		head: "HMD",
-		controllers: [
-			"LeftController",
-			"RightController",
+	vrpn: {
+		trackers: [
+			{ target: "head", signal: "HMD" },
+			{ target: "leftHand", signal: "LeftController" },
+			{ target: "rightHand", signal: "RightController" },
+			/// targets "extra"
 		],
 		analogs: [
-			"JCLS",
-			"JCRS",
+			{ target: "leftStick", signal: "JCLS" },
+			{ target: "rightStick", signal: "JCRS" },
 		],
-		buttons: {
-			"JCLB": [ 0, 1, 2, 3, 4, 6, 7, 10 ], /// make object value -> action
-			"JCRB": [ 0, 1, 2, 3, 4, 6, 7, 10 ],
-		},
+		buttons: [
+			{ 
+				signal: "JCLB",
+				values: [ 0, 1, 2, 3, 4, 6, 7, 10 ]
+			},
+			{ 
+				signal: "JCRB",
+				values: [ 0, 1, 2, 3, 4, 6, 7, 10 ]
+			},
+		],
 	}
 }
 
