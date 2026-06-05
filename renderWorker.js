@@ -56,9 +56,11 @@ camera.lookAt(new THREE.Vector3(0, 0, 0));
     // camera.position.set( -1, 2, -1 );camera.lookAt(new THREE.Vector3(0, 0, 0));
     
 
-    renderer.setAnimationLoop( ( ) => {
-        renderer.render( scene, camera );
-    } );
+renderer.setAnimationLoop( ( ) => {
+    caveManager.caveHelper.visible = true;
+    renderer.render( scene, camera );
+    caveManager.caveHelper.visible = false;
+} );
 }
 
 function updateDebugCamera ( position, quaternion ) {
