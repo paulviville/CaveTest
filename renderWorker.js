@@ -3,6 +3,7 @@ import CaveManager from './CaveJS/CaveManager.js';
 import caveConfig from './caveConfig.js';
 import { scene } from "./TestScene.js";
 import * as THREE from './three/three.module.js';
+import ClientManager from "./ClientManager.js";
 
 console.log( "worker" );
 self.addEventListener( "message", ( { data } ) => {
@@ -69,3 +70,10 @@ function updateDebugCamera ( position, quaternion ) {
 	camera.updateMatrixWorld();
     caveManager.caveHelper.updateScreenCameraHelpers()
 }
+
+
+
+
+const clientManager = new ClientManager( );
+clientManager.connect( "ws://130.79.90.188", "3000" );
+scene.add( clientManager.viewsRegistry )
